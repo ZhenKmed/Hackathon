@@ -17,10 +17,155 @@ EcoWatt est une application web éducative dédiée à l'optimisation de la cons
 ## 🚀 Installation et lancement
 
 ### Prérequis
-- Node.js (version 16 ou supérieure)
-- npm ou yarn
 
-### Installation
+#### Installation de Node.js et npm
+
+**npm** (Node Package Manager) est inclus avec Node.js. Voici comment l'installer selon votre système d'exploitation :
+
+#### Windows
+1. **Téléchargement direct** :
+   - Visitez [nodejs.org](https://nodejs.org/)
+   - Téléchargez la version LTS (recommandée)
+   - Exécutez l'installateur `.msi`
+   - Suivez les instructions d'installation
+
+2. **Avec Chocolatey** (si installé) :
+   ```bash
+   choco install nodejs
+   ```
+
+3. **Avec Winget** :
+   ```bash
+   winget install OpenJS.NodeJS
+   ```
+
+#### macOS
+1. **Téléchargement direct** :
+   - Visitez [nodejs.org](https://nodejs.org/)
+   - Téléchargez la version LTS
+   - Exécutez l'installateur `.pkg`
+
+2. **Avec Homebrew** (recommandé) :
+   ```bash
+   # Installer Homebrew si pas déjà fait
+   /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+   
+   # Installer Node.js et npm
+   brew install node
+   ```
+
+3. **Avec MacPorts** :
+   ```bash
+   sudo port install nodejs18 +universal
+   ```
+
+#### Linux (Ubuntu/Debian)
+1. **Avec apt** (méthode recommandée) :
+   ```bash
+   # Mettre à jour les paquets
+   sudo apt update
+   
+   # Installer Node.js et npm
+   sudo apt install nodejs npm
+   
+   # Vérifier les versions
+   node --version
+   npm --version
+   ```
+
+2. **Avec snap** :
+   ```bash
+   sudo snap install node --classic
+   ```
+
+3. **Depuis les sources NodeSource** (pour la dernière version) :
+   ```bash
+   # Ajouter le repository NodeSource
+   curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
+   
+   # Installer Node.js
+   sudo apt-get install -y nodejs
+   ```
+
+#### Linux (CentOS/RHEL/Fedora)
+1. **Avec dnf/yum** :
+   ```bash
+   # Fedora
+   sudo dnf install nodejs npm
+   
+   # CentOS/RHEL
+   sudo yum install nodejs npm
+   ```
+
+2. **Depuis NodeSource** :
+   ```bash
+   # Ajouter le repository
+   curl -fsSL https://rpm.nodesource.com/setup_lts.x | sudo bash -
+   
+   # Installer
+   sudo dnf install nodejs
+   ```
+
+#### Arch Linux
+```bash
+sudo pacman -S nodejs npm
+```
+
+#### Vérification de l'installation
+Après installation, vérifiez que tout fonctionne :
+```bash
+# Vérifier la version de Node.js
+node --version
+# Devrait afficher quelque chose comme : v18.17.0
+
+# Vérifier la version de npm
+npm --version
+# Devrait afficher quelque chose comme : 9.6.7
+
+# Vérifier l'emplacement d'installation
+which node
+which npm
+```
+
+#### Mise à jour de npm
+Si vous avez une version ancienne de npm :
+```bash
+# Mettre à jour npm vers la dernière version
+npm install -g npm@latest
+```
+
+#### Résolution des problèmes courants
+
+**Problème de permissions sur Linux/macOS** :
+```bash
+# Configurer npm pour utiliser un répertoire différent
+mkdir ~/.npm-global
+npm config set prefix '~/.npm-global'
+
+# Ajouter à votre ~/.bashrc ou ~/.zshrc
+export PATH=~/.npm-global/bin:$PATH
+
+# Recharger le profil
+source ~/.bashrc
+```
+
+**Erreur EACCES** :
+```bash
+# Option 1 : Changer le propriétaire du répertoire npm
+sudo chown -R $(whoami) $(npm config get prefix)/{lib/node_modules,bin,share}
+
+# Option 2 : Utiliser un gestionnaire de versions Node (recommandé)
+# Installer nvm (Node Version Manager)
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+source ~/.bashrc
+nvm install --lts
+nvm use --lts
+```
+
+### Installation du projet
+
+Une fois Node.js et npm installés :
+
 ```bash
 # Cloner le projet
 git clone [URL_DU_REPO]
@@ -34,6 +179,40 @@ npm run dev
 ```
 
 L'application sera accessible sur `http://localhost:5173`
+
+### Scripts disponibles
+
+```bash
+# Développement avec rechargement automatique
+npm run dev
+
+# Build de production
+npm run build
+
+# Prévisualisation du build de production
+npm run preview
+
+# Vérification du code (linting)
+npm run lint
+
+# Installation des dépendances (si package.json existe)
+npm install
+
+# Installation d'une nouvelle dépendance
+npm install [nom-du-package]
+
+# Installation d'une dépendance de développement
+npm install --save-dev [nom-du-package]
+
+# Mise à jour des dépendances
+npm update
+
+# Audit de sécurité
+npm audit
+
+# Correction automatique des vulnérabilités
+npm audit fix
+```
 
 ## 📖 Guide d'utilisation
 
