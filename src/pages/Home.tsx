@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Lightbulb, Leaf, TrendingDown, ArrowRight, Battery, Home as HomeIcon, Zap } from 'lucide-react';
 

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { CheckCircle, XCircle, RotateCcw, Award } from 'lucide-react';
 
 interface Question {
